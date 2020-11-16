@@ -8,14 +8,14 @@ pipeline {
     stages {
         stage('Scan from-image') {
             steps {
-                echo 'Scanning from-image ...'
-                echo 'Getting paths ...'
+                echo 'Scanning from-image ... (Clair and IQ CLI)'
+                echo 'Getting paths ... (custom script)'
             }
         }
         stage('Scan current-image') {
             steps {
-                echo 'Scanning current-image ...'
-                echo 'Getting paths ...'
+                echo 'Scanning current-image ... (Clair and IQ CLI)'
+                echo 'Getting paths ... (custom script)'
             }
         }
         stage('Compare and separate reports') {
