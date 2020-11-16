@@ -6,9 +6,16 @@ pipeline {
     }
 
     stages {
+        stage('Starting Clair scanner ...') {
+            steps {
+                sh 'docker run -p 5432:5432 -d --name clair-db arminc/clair-db:latest'
+                sh 'docker run -p 6060:6060 --link clair-db:postgres -d --name clair arminc/clair-local-scan:latest'
+            }
+        }
         stage('Scan from-image') {
             steps {
                 echo 'Scanning from-image ... (Clair and IQ CLI)'
+                
                 echo 'Getting paths ... (custom script)'
             }
         }
